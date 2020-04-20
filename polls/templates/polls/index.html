@@ -8,18 +8,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  
-  <title>Agency - Start Bootstrap Theme</title>
+  <style>
+		body {
+			background-image: url("{%static 'images/BACK.jpg'%}");
+		}
+</style>
+  <link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}">
+  <title>check</title>
 
-
+	{% comment %} <script src="{% static 'js/style.js' %}"></script> {% endcomment %}
+	
 
 </head>
 
 <body id="page-top">
 
+
   <!-- <input type="file" multiple> image </input> -->
   
-    <form method = "POST" enctype="multipart/form-data"> 
+    {% comment %} <form method = "POST" enctype="multipart/form-data"> 
       {% csrf_token %} 
       <!-- {{ form.as_p }}  -->
       
@@ -33,11 +40,55 @@
       <div>
         <button type="submit">Upload</button> 
       </div>
-      
+       {% endcomment %}
       
   </form> 
    
-  
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<div class="container center">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="white">PREDICT</h1>
+			
+		</div>
+	</div>
+	
+	<form name="upload" method="POST" action="#" enctype="multipart/form-data" accept-charset="utf-8">
+  {% csrf_token %} 
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 center">
+				<div class="btn-container">
+					<!--the three icons: default, ok file (img), error file (not an img)-->
+					<!--this field changes dinamically displaying the filename we are trying to upload-->
+				     <img id="output" src={{ direct }} width="200" height="200">  
+					 <h1 class = "white"> 
+						Predict : {{Predict}}  ({{Percent}} %)
+					 </h1>
+
+					<p> </p>
+					<!--our custom btn which which stays under the actual one-->
+					{% comment %} <button type="button" id="btnup" class="btn btn-primary btn-lg">Browse for your pic!</button> {% endcomment %}
+					<!--this is the actual file input, is set with opacity=0 beacause we wanna see our custom one-->
+					<div class = "input-image">
+						<input class = "upload-img" name="photo" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
+					</div>
+          			
+				</div>
+			</div>
+		</div>
+			<!--additional fields-->
+		<div class="row">			
+			<div class="col-md-12">
+				<!--the defauld disabled btn and the actual one shown only if the three fields are valid-->
+				{% comment %} <input type="submit" value="Submit!" class="btn btn-primary" id="submitbtn"> {% endcomment %}
+				<button class ="btn btn-primary" type="submit">PREDICT</button> 
+				{% comment %} <button type="button" class="btn btn-default" disabled="disabled" id="fakebtn">Submit! <i class="fa fa-minus-circle"></i></button> {% endcomment %}
+			</div>
+		</div>
+	</form>
+</div>
+
+{% comment %} <a href="http://www.emilianocostanzo.com" target="_blank" id="sign">EMI</a> {% endcomment %}
 
   
 </body>

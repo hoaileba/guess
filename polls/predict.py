@@ -6,13 +6,18 @@ def ans(image_dir):
     # model.compile(optimizer = 'adam', loss = 'categorical_crossentropy',metrics = ['accuracy'])
     img = cv.imread(image_dir)
     img_gray = np.array(cv.cvtColor(img,cv.COLOR_BGR2GRAY))
-    print(img)
-    img_= cv.resize(img_gray,(28,28))
-    img_ = np.array(img_).reshape(1,28,28,1)
+    # print(img)
+    img_= cv.resize(img_gray,(32,32))
+    img_ = np.array(img_).reshape(1,32,32,1)
     img_ = img_/255.0
     pred = model.predict(img_)
-    pred = np.argmax(pred,axis = 1)
-    return pred[-1]
+    pre = np.argmax(pred,axis = 1)
+    x = pre[-1]
+    # print(x)
+    # print(pred[-1][x])
+    # prercent = pred[x]
+    # print(pre[-1],percent)
+    return x, pred[-1][x]
 
 
 
