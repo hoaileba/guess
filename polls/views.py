@@ -28,7 +28,7 @@ def upload(request):
             img = fs.url(name)
             # print(img)
             num ,percent= ans('static/images/'+uploaded.name)
-            if percent < 35 :
+            if percent < 0.35 :
                 num = "NAN"
                 percent = 1
             return render(request, 'polls/index.html',{'direct' : img , 'Predict' :num ,'Percent':percent*100.0 })
